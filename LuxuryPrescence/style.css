@@ -1,0 +1,433 @@
+* {
+    padding: 0;
+    margin: 0; 
+    border: 0;
+}
+
+@import url(https://db.onlinewebfonts.com/c/e3d5ec4c7e5f3041c277d5cf3d518c71?family=Bodoni+MT+Condensed);
+
+@font-face {
+  font-family: "Bodoni MT Condensed";
+  src: url("https://db.onlinewebfonts.com/t/e3d5ec4c7e5f3041c277d5cf3d518c71.eot");
+  src: url("https://db.onlinewebfonts.com/t/e3d5ec4c7e5f3041c277d5cf3d518c71.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/e3d5ec4c7e5f3041c277d5cf3d518c71.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/e3d5ec4c7e5f3041c277d5cf3d518c71.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/e3d5ec4c7e5f3041c277d5cf3d518c71.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/e3d5ec4c7e5f3041c277d5cf3d518c71.svg#Bodoni MT Condensed")format("svg");
+}
+
+body{
+/*effect acquired from https://codepen.io/edmundojr/pen/xOYJGw*/
+--dot-bg: rgb(234, 234, 234);
+--dot-color: rgb(65, 66, 73);
+--dot-size: 1px;
+--dot-space: 22px;
+background:
+	linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+	linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+	var(--dot-color);
+}
+.navContainer{
+    position:relative;
+    width: 100%;
+    background-image:url(img/work-with-us.webp);
+    background-position: center;
+    background-size: cover;
+    animation: change 30s infinite ease-in-out;
+}
+@keyframes change {
+    0%, 70% {
+      background-image: url("img/white-living-room.jpg");
+    }
+    10%, 60% {
+      background-image: url("img/real-estate-photos (4).jpg");
+    }
+    20%, 80% {
+      background-image: url("img/real-estate-photos (1).jpg");
+    }
+    30%, 90% {
+      background-image: url("img/real-estate-photos (2).jpg");
+    }
+    40% {
+      background-image: url("img/real-estate-photos (3).jpg");
+    }
+    50%, 100% {
+      background-image: url("img/work-with-us.webp");
+    }
+  }
+.blackGradient{
+    position:relative;
+    height: 540px;
+    background: linear-gradient(90deg, black, transparent);
+    
+}
+.blackGradient::before{
+    /* effect gained from https://css-tricks.com/making-static-noise-from-a-weird-css-gradient-bug/ */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-conic-gradient(#0000 1.000045%, #424242 1.0005%);
+    mix-blend-mode: overlay;
+}
+.undrline {
+  width: 20vw;
+  height:3px;
+  border-bottom: 1px solid white ;
+}
+.undrline:nth-child(1){
+  width: 3vw;
+}
+.undrline:nth-child(2){
+  width: 10vw;
+}
+
+.navbar{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}
+.optionscontainer{
+  display: flex;
+  position:relative;
+  top: 7vh;
+  align-items: center;
+  justify-content: center;
+}
+.elegantbrace{
+  display:flex;
+  position: absolute;
+  justify-content: center;
+  align-content: center;
+  min-width: 460px;
+  max-height: 120px;
+  pointer-events: none;
+  user-select: none;
+}
+.leftcurlybrace,.rightcurlybrace{
+  height:100px;
+}
+.leftcurlybrace{
+  margin-right: 300px;
+}
+.navOptions{
+    display:flex;
+    position: relative;
+    min-height:84px;
+    max-width: 320px;
+    overflow-x: auto; 
+    scroll-behavior: smooth;
+    transition: position 0.3 ease;
+}
+.navOptions .option {
+  opacity: 0.5;
+  transform: scale(1);
+  height: 80px;
+  transition: opacity 0.3s ease;
+}
+.mainlogo{
+    height :30px;  
+    padding-top: 40px;
+    user-select: none;
+}
+
+h1{
+    font-family: "Playfair Display", serif;
+}
+p{
+    font-family: "Karla", sans-serif;
+}
+.maintitlecard {
+  display: block;
+  font-size: 9vw;
+} /* for only viewing "Services"  first*/
+
+.titlecard {
+    display: none;
+    font-size: 9vw;
+}
+
+.longtitlecard {
+    display: none;
+    font-size: 8vw;
+}
+
+.maintitlecard,.titlecard,.longtitlecard {
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-weight: 20;
+    max-height: 200px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: titlecardAnim 0.6s ease-out;
+}
+
+@keyframes titlecardAnim{
+  0%{
+  transform: translateY(60%);
+  opacity: 0%;
+  scale: 90%;
+  }
+  60%{
+  opacity: 50%;
+  }
+  100%{
+  transform: translateY(0%);
+  opacity: 100%;
+  scale: 100%;
+  }
+}
+
+.option{
+    background-color: none;
+    min-width: 160px;
+    padding: 1px;
+    margin-left: -10px;
+    max-height:53px;
+
+    user-select: none;
+    font-weight: 700;
+    text-size-adjust: 1.2vw;
+    color: white;
+
+    border-left-style: solid;
+    border-right-style: solid;
+    border-width: 1px;
+    border-color: white;
+
+    align-content: center;
+    text-align: center;
+}
+.navOptions::-webkit-scrollbar {
+    width: 10px;
+    border-bottom: 1px solid white;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: white;
+    border: 5px solid transparent;
+    border-radius: 30px;
+    background-clip: content-box;
+  }
+
+/* search bar */
+.section1{
+    position: relative;
+}
+.searchbar{
+  position:relative;
+  display: flex;
+  background:url(img/textures/searchBg.png);
+  height:60px;
+  padding-left:10vw;
+  border-bottom: 3px groove #727272 ;
+  box-shadow: 3px 5px 20px  rgb(168, 168, 168);
+  align-items: center;
+}
+.middle{
+  width: 60vw;
+  height:100%;
+  align-items: center;
+}
+.blk{
+    margin: 2px;
+    height: 30px;
+    width: 3px;
+    background: white;
+}
+
+.blk:nth-child(1){
+  height: 20px;
+}
+.blk:nth-child(3){
+    height: 10px;
+}
+.blk:nth-child(5){
+  height: 38px;
+}
+
+.search{
+  fill: rgb(207, 207, 207);
+  height: 26px;
+  width: 26px;
+}
+
+.input {
+  width: 10px;
+  height: 80px;
+  outline: whitesmoke;
+  background: transparent;
+  color: rgb(166, 166, 166);
+  font-size: 20px;  
+}
+.input::placeholder{
+  font-family: "Playfair Display", serif;
+}
+.btn::placeholder{
+  font-family: "Playfair Display", serif;
+}
+.btn {
+  height: 60px;
+  color:  rgb(166, 166, 166);;
+  box-sizing: border-box;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.btn::before {
+  content: "";
+  height: 30px;
+  background: #fff;
+  position: absolute;
+}
+.inclicked {
+  width: 360px;
+  border-radius: 0;
+  padding: 0 15px;
+  padding-right: 45px;
+}
+.close::before, .close::after {
+  content: "";
+  width: 4px;
+  background: #fff;
+  position: absolute;
+} 
+.appointment{
+  font-family: "Noticia Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  background-color: transparent;
+  color: rgb(172, 172, 172);
+  float: right;
+}
+
+/*Services Content Section*/
+.servicesContent{
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ position:relative;
+}
+.desc1{
+  position: relative;
+  float:right;
+  display: grid;
+  grid-template-columns: repeat(10,10%);
+  grid-template-rows:repeat(10, 10%);
+
+  width: 83vw;
+  height:80vh;
+  margin-top: 10vh;
+  margin-right: 200px;
+  margin-right: 20px;
+  margin-left: auto;
+  padding: 0px;
+  border-radius: 30px;
+  padding: 25px;
+  
+  box-shadow: 3px 60px 40px  rgb(168, 168, 168);
+
+  background-image: url(img/textures/AdobeStock_553545587_Preview.jpeg);
+  background-size: 300px;
+  align-content: center;
+}
+.item-1{
+  grid-row: 1 / 11;
+  grid-column: 1/ 5;
+  background-image: url(img/desc1photoIMG.png);
+ }
+.filter{
+  height:auto;
+  background: linear-gradient(360deg, black, transparent);
+}
+.filter::before{
+  /* effect gained from https://css-tricks.com/making-static-noise-from-a-weird-css-gradient-bug/ */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(#0000 1.000045%, #424242 1.0005%);
+  mix-blend-mode: overlay;
+}
+ .item-1 h1{
+  float: bottom;
+  font-family: "Bodoni MT Condensed";
+  font-size: 80px;
+  color: rgb(44, 42, 37);
+}
+
+ .item-2{
+  grid-row: 2 / 6;
+  grid-column: 5/ 8;
+ }
+ .item-3{
+  grid-row: 2 / 6;
+  grid-column: 8/ 11;
+ }
+ .item-4{
+  grid-row: 6 / 10;
+  grid-column: 5/ 8;
+ }
+ .item-5{
+  grid-row: 6 / 10;
+  grid-column: 8/11;
+ }
+ 
+ .block{
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent),url(img/textures/lightwave.png) ;
+  background-blend-mode: overlay;
+  background-color:white;
+
+  justify-items: center;
+  border-radius: 30px;
+  padding:3px;
+  margin:5px;
+ }
+ .block img{
+  height:70%
+ }
+
+/**/
+@media only screen and (max-width: 600px){ 
+
+    .navOptions{
+      width: 200px;
+      overflow-y:hidden;
+    }
+    .leftcurlybrace,.rightcurlybrace{
+    height:66px;
+    }
+    .leftcurlybrace{
+    margin-right: 200px;
+    }
+    .option{
+    min-width:110px;
+    font-size: 14px;
+    margin-left: -5px;
+  }
+
+  /*  */
+  .desc1{
+    display: flex;
+    flex-direction: column;
+    height: 2000px;
+    }
+  .item-1{
+    width: 300px;
+    }
+  .block{
+    justify-content: center;
+    width:300px;
+  }
+
+  .img{
+    width:300px;
+  }
+
+  }
+
+
