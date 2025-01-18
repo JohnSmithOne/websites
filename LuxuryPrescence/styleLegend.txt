@@ -1,0 +1,12 @@
+Fonts
+>  "Bodoni MT Condensed"
+>   "ShockaBold"
+>   "TBJMaltaMini"
+>   "Noticia Text", serif
+>   "Karla", sans-serif
+>   "Playfair Display", serif
+
+
+Color
+>
+>

@@ -92,3 +92,19 @@ function updateOpacityAndScale() {
 }
 navOptions.addEventListener('scroll', updateOpacityAndScale);
 updateOpacityAndScale();
+
+//Sticky Search and Appointment Header
+const mainMenu = document.querySelector( '.searchbar' );
+window.addiEventListener( 'scroll', ()=> {
+    if( this.scrollY > 100 ){
+        mainMenu.classList.add( 'slidedown' );
+    }else{
+        mainMenu.classList.remove( 'slidedown' );
+    }
+} );
+
+
+$(".btn").on("click", function() {
+  $(".input").toggleClass("inclicked");
+  $(".btn").toggleClass("close");
+});
