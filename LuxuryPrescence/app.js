@@ -12,6 +12,7 @@ const navOptionstitle = [
   { id: 'contactUs', index: 7 }
 ];
 
+
 //Reusable helper to center an element
 function centerElement(element) {
   const offsetLeft = element.offsetLeft;
@@ -93,18 +94,96 @@ function updateOpacityAndScale() {
 navOptions.addEventListener('scroll', updateOpacityAndScale);
 updateOpacityAndScale();
 
-//Sticky Search and Appointment Header
-const mainMenu = document.querySelector( '.searchbar' );
-window.addiEventListener( 'scroll', ()=> {
-    if( this.scrollY > 100 ){
-        mainMenu.classList.add( 'slidedown' );
-    }else{
-        mainMenu.classList.remove( 'slidedown' );
+
+//search/stickyNav interactions
+document.addEventListener("DOMContentLoaded", () => {
+  const searchbar = document.getElementById("searcbar");
+  const jhserenoLogo = document.getElementById("jhserenoLogo");
+  const mainLogo = document.getElementById("mainlogo");
+  const backtoTop = document.getElementById("backtoTop");
+
+
+  jhserenoLogo.style.opacity = "0";
+  jhserenoLogo.style.pointerEvents = "none";
+
+  window.addEventListener("scroll", () => {
+
+    const searchbarTop = searchbar.getBoundingClientRect().top;
+
+    if (searchbarTop <= 0) {
+      jhserenoLogo.style.opacity = "1";
+      jhserenoLogo.style.pointerEvents = "auto";
+
+      mainLogo.style.opacity = "0";
+      backtoTop.style.opacity = "1";
+      backtoTop.style.bottom = "4rem";
+      
+    } else {
+      jhserenoLogo.style.opacity = "0";
+      jhserenoLogo.style.pointerEvents = "none";
+
+      mainLogo.style.opacity = "1";
+      backtoTop.style.opacity = "0";
+      backtoTop.style.bottom = "-4rem";
     }
-} );
+  });
+});
+
+const searchButton = document.getElementById("searchButton");
+const searchInput = document.getElementById("searchInput");
+
+searchButton.addEventListener("click", () => {
+  searchInput.classList.toggle("visible"); // Toggle the visibility
+});
 
 
-$(".btn").on("click", function() {
-  $(".input").toggleClass("inclicked");
-  $(".btn").toggleClass("close");
+//Section 4 onclick animations
+const showMoreText1 = document.getElementById("showMoreText1");
+const moreText1 = document.getElementById("moreText1");
+const showMoreText2 = document.getElementById("showMoreText2");
+const moreText2 = document.getElementById("moreText2");
+
+const coverMessage1 = document.getElementById("coverMessage1");
+const coverMessage2 = document.getElementById("coverMessage2");
+
+const h1CoverMessage1 = coverMessage1.querySelector("h1");
+const h1CoverMessage2 = coverMessage2.querySelector("h1");
+
+const section4Text = document.getElementById("section4Text");
+const section4TextP = section4Text.querySelector("p");
+
+const imgBg1 = document.getElementById("imgBg1");
+
+showMoreText1.addEventListener("click", event => {
+
+  if (moreText1.style.display === "none" 
+    || moreText1.style.display === "" ) {
+    
+    moreText1.style.display = "block";
+    showMoreText1.style.animation = "showMoreTextOpenButton 0.5s ease-in-out forwards";
+    coverMessage1.style.animation = "showMoreTextOpen 0.5s ease-in-out forwards";
+    imgBg1.style.animation = "highlighTextBG 0.5s ease-in-out forwards";
+  
+  } else {
+    moreText1.style.display = "none";
+    showMoreText1.style.animation = "showMoreTextCloseButton 0.5s ease-in-out forwards";
+    coverMessage1.style.animation = "showMoreTextClose 0.5s ease-in-out forwards";
+     imgBg1.style.animation = "highlighTextBG 0.5s ease-in-out forwards";
+  }
+});
+
+showMoreText2.addEventListener("click", event => {
+
+  if ( moreText2.style.display === "none"
+    ||moreText2.style.display === "") {
+    moreText2.style.display = "block";
+   showMoreText2.style.animation = "showMoreTextOpenButton 0.5s ease-in-out forwards";
+   coverMessage2.style.animation = "showMoreTextOpen 0.5s ease-in-out forwards";
+  } 
+  
+  else {
+    moreText2.style.display = "none";
+    showMoreText2.style.animation = "showMoreTextCloseButton 0.5s ease-in-out forwards";
+    coverMessage2.style.animation = "showMoreTextClose 0.5s ease-in-out forwards";
+  }
 });
