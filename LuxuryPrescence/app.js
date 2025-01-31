@@ -133,57 +133,33 @@ const searchButton = document.getElementById("searchButton");
 const searchInput = document.getElementById("searchInput");
 
 searchButton.addEventListener("click", () => {
-  searchInput.classList.toggle("visible"); // Toggle the visibility
+  searchInput.classList.toggle("visible"); 
 });
 
 
-//Section 4 onclick animations
-const showMoreText1 = document.getElementById("showMoreText1");
-const moreText1 = document.getElementById("moreText1");
-const showMoreText2 = document.getElementById("showMoreText2");
-const moreText2 = document.getElementById("moreText2");
-
-const coverMessage1 = document.getElementById("coverMessage1");
-const coverMessage2 = document.getElementById("coverMessage2");
-
-const h1CoverMessage1 = coverMessage1.querySelector("h1");
-const h1CoverMessage2 = coverMessage2.querySelector("h1");
-
-const section4Text = document.getElementById("section4Text");
-const section4TextP = section4Text.querySelector("p");
-
-const imgBg1 = document.getElementById("imgBg1");
-
-showMoreText1.addEventListener("click", event => {
-
-  if (moreText1.style.display === "none" 
-    || moreText1.style.display === "" ) {
-    
-    moreText1.style.display = "block";
-    showMoreText1.style.animation = "showMoreTextOpenButton 0.5s ease-in-out forwards";
-    coverMessage1.style.animation = "showMoreTextOpen 0.5s ease-in-out forwards";
-    imgBg1.style.animation = "highlighTextBG 0.5s ease-in-out forwards";
+//subscribe button interaction
+document.querySelector(".newsletter__subscribe").addEventListener("submit", function(event) {
+  event.preventDefault(); 
   
-  } else {
-    moreText1.style.display = "none";
-    showMoreText1.style.animation = "showMoreTextCloseButton 0.5s ease-in-out forwards";
-    coverMessage1.style.animation = "showMoreTextClose 0.5s ease-in-out forwards";
-     imgBg1.style.animation = "highlighTextBG 0.5s ease-in-out forwards";
-  }
-});
+  const subscribeBTN = document.querySelector(".btn--subscribe");
+  const successMessage = document.querySelector(".successHide");
 
-showMoreText2.addEventListener("click", event => {
+  subscribeBTN.style.display = "none";
+  subscribeBTN.style.opacity = "0"
 
-  if ( moreText2.style.display === "none"
-    ||moreText2.style.display === "") {
-    moreText2.style.display = "block";
-   showMoreText2.style.animation = "showMoreTextOpenButton 0.5s ease-in-out forwards";
-   coverMessage2.style.animation = "showMoreTextOpen 0.5s ease-in-out forwards";
-  } 
-  
-  else {
-    moreText2.style.display = "none";
-    showMoreText2.style.animation = "showMoreTextCloseButton 0.5s ease-in-out forwards";
-    coverMessage2.style.animation = "showMoreTextClose 0.5s ease-in-out forwards";
-  }
+  successMessage.style.display = "block";
+  successMessage.style.opacity = "1";
+
+  setTimeout(function() {
+    subscribeBTN.style.transition = "opacity 1s ease"; 
+    subscribeBTN.style.opacity = "1"; 
+
+    successMessage.style.transition = "opacity 1s ease"; 
+    successMessage.style.opacity = "0"; 
+
+    setTimeout(() => {
+      subscribeBTN.style.display = "block"; 
+      successMessage.style.display = "none"; 
+    }, 1000); // Matches transition duration
+  }, 3000);
 });
