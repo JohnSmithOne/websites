@@ -350,7 +350,9 @@ p{
   justify-content: center;
   height: 65%;
 }
-.contact-us-container > *, .contact-us-container .form-content{
+.contact-us-container > *, 
+.contact-us-container .form-content,
+.message-container input:nth-child(8){
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -360,7 +362,8 @@ p{
   width:23rem;
   padding:1.5rem;
 }
-.bookingScreen-hidden .message-container> *, .bookingScreen-hidden .message-container{
+.bookingScreen-hidden .message-container> *, 
+.bookingScreen-hidden .message-container{
   background-color: #3e3e3e;
   color:white;
 }
@@ -400,20 +403,43 @@ p{
   color:#dedddd;
 }
 
-.message-container input:nth-of-type(5){
+.message-container input:nth-child(8){
+  height:unset;
+  width: unset;
+  padding: 0.5rem 2rem 0.5rem 2rem;
   border: 1px white solid;
+
+  transition: all 0.2s ease;
+}
+.message-container input:nth-child(8):hover{
+  color:#3e3e3e;
+  background-color: white;
 }
 .message-container .form-content{ 
+  gap:1rem;
  height:unset;
  padding:unset;
 }
 
+.message-container .lp-disclaimer{
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: justify;
+  width: 80%;
+}
 .message-container .lp-tcr-message{
+  width:90%;
   font-family: "Karla", sans-serif;
   font-size: 0.75rem;
 }
-
+.message-container .lp-tcr-content {
+  display: flex;
+  flex-wrap: wrap;
+}
 .message-container .lp-tcr-message a{
+ 
   color:#dedddd;
 }
 .h-pot {
