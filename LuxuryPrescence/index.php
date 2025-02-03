@@ -4,25 +4,79 @@
 <head>
 <meta charset ="UTF-8">
 <meta name = "viewport" content = "width-device-width, initial-scale=1.0">
+
 <!-- FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Karla Font -->
 <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Karla:ital,wght@0,200..800;1,200..800&family=Lilita+One&family=Londrina+Outline&family=Rowdies:wght@300&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Karla:ital,wght@0,200..800;1,200..800&family=Lilita+One&family=Londrina+Outline&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rowdies:wght@300&display=swap" rel="stylesheet">
-<link rel = "stylesheet"  href = "style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Karla:ital,wght@0,200..800;1,200..800&family=Lilita+One&family=Londrina+Outline&family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rowdies:wght@300&display=swap" rel="stylesheet">
-<link href="https://db.onlinewebfonts.com/c/e3d5ec4c7e5f3041c277d5cf3d518c71?family=Bodoni+MT+Condensed" rel="stylesheet">
 
-
-<!-- JS Script -->
-
+<!-- CSS -->
+<link rel = "stylesheet"  href = "style.css">
 </head>
 
 <title>Services | Pleasanton Real Estate | Julie Hansen Partnership</title>
-
 <body>
+<div class="bookingScreen-hidden" id = "bookingScreen">  
+  <div class = "bookAppointmentTitle">
+    BOOK AN APPOINTMENT
+  </div>
+  <div class="contact-us-container">
+
+    <div class="phone-container">
+      <img style="height:2rem;"src="img/vector/jhIconGold.png" alt="">
+      <i class="lp-i lp-i--tty icon-class"></i>
+      <p><a href="tel:(925) 553-6707" class="">(925) 553-6707</a></p>
+      <i class="lp-i--envelope icon-class"></i>
+      <p><a href="mailto:luxuryhomesinwc@icloud.com" class="">luxuryhomesinwc@icloud.com</a></p>
+      <i class="lp-i lp-i--map-marked icon-class"></i>
+      <p>4337 Chabot Drive, Pleasanton, CA 94588Julie Hansen-Orvis | CA DRE# 00934447</p>
+    </div>
+          
+    <div class="message-container">
+       <h2 class="headline">Submit A Message</h2>
+          <form class="form-content" data-type="contact-form">
+            <div class="h-pot">
+              <label for="-middleName">Middle Name</label>
+              <input id="-middleName" name="middleName" value="" autocomplete="off" tabindex="-1">
+            </div>
+            <input type="text" placeholder="Name" name="name" class="" value="">
+            <input type="text" placeholder="Phone" name="phoneNumber" class="" value="">
+            <input type="text" placeholder="Email" name="email" class="" value="">
+            <input type="text" placeholder="Message" name="message" class="" value="">
+            <div class="lp-disclaimer">
+              <label class="lp-tcr-content">
+                <span class="lp-tcr-checkbox">
+                  <input type="checkbox" name="termsAccepted" 
+                    oninvalid="this.setCustomValidity('Please accept the terms and conditions')" 
+                    oninput="this.setCustomValidity('')" required="">
+                    </span>
+                      <span class="lp-tcr-message">
+                        By providing Julie Hansen Partnership
+                        your contact information, you acknowledge and agree to our
+                        <a href="/terms-and-conditions" target="_blank">Privacy Policy</a> and consent to receiving marketing communications,
+                        including through automated calls, texts, and emails, some of which may use artificial or prerecorded voices.
+                        This consent isn’t necessary for purchasing any products or services and you may opt out at any time.
+                        To opt out from texts, you can reply, ‘stop’ at any time. To opt out from emails, you can click on the unsubscribe
+                        link in the emails. Message and data rates may apply.
+                      </span>
+                </label>
+              </div>
+              <input style="display:none" type="text" name="source" value="CONTACT_INQUIRY">
+              <input type="submit" value="Send" class="button-component ">
+            </form>
+            
+          </div>
+  </div>
+  <div class="exitButton">
+      <button onclick = "bookingExit()" class = "bookingClose">
+        <div class="backwardsSlantedLine"></div>
+        <div class="forwardsSlantedLine"></div>
+      </button>
+  </div>
+</div>
+ 
 <div class = "navContainer">
     <div class = "blackGradient">
     <img src = "img/jhsereno-light.webp" class = "mainlogo" id = "mainlogo" >
@@ -62,26 +116,42 @@
 
 <div class = "searchbar" id = "searcbar"> 
   <div id = "jhserenoLogo"></div>
+  <div id = "fillerLines" class = "undrlineContainer fillerLines" style = " position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index:-1;">
+    <a href = "#">
+      <div class ="undrline"></div>
+      <div class ="undrline"></div>
+      <div class ="undrline"></div>
+    </a>
+  </div>
+    
   <div class = "search-booking">
-
-  <form>
-	<input class = "searchInput" id = "searchInput" type="search" name="search" pattern=".*\S.*" required>
-	<button class="searchButton" id="searchButton" type="submit">
-  <img class = "navIcon1"src = "img/vector/find.png">
-	</button>
-</form>
-    <button class = "bookingButton">
+    <form>
+      <input class = "searchInput" id = "searchInput" type="search" name="search" pattern=".*\S.*" required>
+      <button class="searchButton" id="searchButton" type="submit">
+        <img class = "navIcon1"src = "img/vector/find.png">
+      </button>
+    </form>
+    <button onclick = "bookingOpen()" class = "bookingButton" id = "bookingButton">
       <img class = "navIcon2"src = "img/vector/booking.png">
     </button>
-</div>
+  </div>
 </div>
 
 <div class = "servicesContent">
-<div class = "y-line"></div>
-<div class = "x-line"> </div>
+<!-- <div class = "y-line"></div>
+<div class = "x-line"> </div> -->
 
-<a class= "backtoTop" id = "backtoTop" href = "#"><img src="img/vector/arrowUp.png" alt=""></a>
-
+<div class = "fixedPositionedButtons">
+    <a class = "phone" id = "phone" href = "tel:(925) 553 -6707">
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='-75 -80 700 600'><path d='m493.4 24.6-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4' fill = "white"/></svg>
+    </a>
+    <a class = "mail" id = "mail" href = "mailto:luxuryhomesinwc@icloud.com">
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='-75 -60 650 560'><path d='M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z'fill = "white"/></svg>
+    </a>
+    <a  href = "#" class= "backtoTop" id = "backtoTop">
+      <img src="img/vector/arrowUp.png" alt="">
+    </a>
+</div>
 
 <div class = "section4">
   <div class = "undrlineContainer">
@@ -124,7 +194,6 @@
 
   <div class = "posterContainer">
     <div class = "posterImage">
-
     <div class = "hover" style = "padding-left:2rem; display:flex; justify-content:space-between;">
         <h1 style = 'font-family:"PoiretOne";'>hover</h1>
         </div>
@@ -159,14 +228,9 @@
         </div>
     </div>
   </div>
-
   </div>
   
-  <div class = "undrlineContainer">
-    <div class ="undrline"></div>
-    <div class ="undrline"></div>
-    <div class ="undrline"></div>
-  </div>
+
 </div>
 
 
@@ -323,82 +387,83 @@
     </div>
 </div>
 
+
+
+
+
 <div class = "section5">
-<div class = "titleCommsTablet">
-<div class = "titleDecoration">
-    
-    </div>
-    <div class ="shapeDecorations">
-        <div class = "circle"></div>
-        <div class = "circle"></div>
-        <div class = "x-line"></div>
-        <div class = "y-line"></div>
-      </div>
-      <h1 style = "color:white;">The Hansen</h1> <h1>Partners</h1>
-          <h1> Communications Tablet</h1>
-</div>
   <div class = "commsTabletContainer">
-    <div class = "commsTablet"> 
-      <img src="img/edit-image-056.webp" alt="The Hansen Partners Communications Tablet">
-      <div class = "section5text">
+    <div class = "tabletBenefits">
+      <h1>Benefits</h1>
+        <ul>
+          <li>Review all documents and sign in the comfort of your home or anywhere.</li>
+          <li>Stay up to date on all marketing activities, review materials, photos, etc. in real time.</li>
+          <li>Meet with us face to face on our Gotomeeting.com platform to go over and discuss the events of the week.</li>
+          <li>You have your own email assigned just for you and your common space to quickly write a note, or quickly send a
+            video message to us for fast communication using our Bomb bomb video messaging system.</li>
+        </ul>
+    </div>
+
+    <div  class = "section5text">
+        <div class ="shapeDecorations">
+          <div class = "circle"></div>
+          <div class = "circle"></div>
+          <div class = "x-line"></div>
+          <div class = "y-line"></div>
+        </div>
+        <p class ="message">
+        We believe that transparency and guiding you and your family through the process is key to having the best experience. 
+        During these uncertain times. It is a good feeling to know you have some one with a proven track record you can count on.
+        We will be here to handle your needs during the Real Estate process.  We think of it before a need even arises. Because, 
+        that is just what we do.  Who you work with does matter! 
+        </p>
+    </div>
+</div>
+
+<div class = "titleCommsTablet">
+  <div class = "blackGradient">
+    <div class = "title">
+      <div class = "undrlineContainer">
+        <div class ="undrline"></div>
+        <div class ="undrline"></div>
+        <div class ="undrline"></div>
+      </div>
+
+      <div class = "text">
+        <h1 style = "font-size: 2rem;">The HANSEN </h1>
+        <h1 style = "font-size:2.4rem;">PARTNERS </h1>
+        <h1 style = "font-size:1.5rem; color: #bc9b6a; ">Communications Tablet</h1>
+      </div>
+
+      <div class = "undrlineContainer">
+        <div class ="undrline"></div>
+        <div class ="undrline"></div>
+        <div class ="undrline"></div>
+      </div>
+    </div>
+    <div class = "section5text">
       <div class = "message">
-          <p>We have created this as a wonderful tool so that we can communicate with you daily, provide 
+          <p >We have created this as a wonderful tool so that we can communicate with you daily, provide 
            you with updates on what is happening with your home. We are available at the with a click of your tablet.
           </p>
       </div>
     <div class ="shapeDecorations">
-      <div class = "circle"></div>
-      <div class = "circle"></div>
       <div class = "x-line"></div>
       <div class = "y-line"></div>
     </div>
-    
-</div>
     </div>
-
-    <div class ="tabletPurposes" style ="flex-wrap:wrap-reverse;">
-        <div  class = "section5text">
-        <div class ="shapeDecorations">
-            <div class = "circle"></div>
-            <div class = "circle"></div>
-            <div class = "x-line"></div>
-      <div class = "y-line"></div>
-          </div>
-          <p class ="message">
-          We believe that transparency and guiding you and your family through the process is key to having the best experience. 
-          During these uncertain times. It is a good feeling to know you have some one with a proven track record you can count on.
-          We will be here to handle your needs during the Real Estate process.  We think of it before a need even arises. Because, 
-          that is just what we do.  Who you work with does matter! 
-          </p>
-      </div>
-      <div class = "tabletBenefits">
-    <h1>Benefits</h1>
-  <ul>
-    <li>Review all documents and sign in the comfort of your home or anywhere.</li>
-    <li>Stay up to date on all marketing activities, review materials, photos, etc. in real time.</li>
-    <li>Meet with us face to face on our Gotomeeting.com platform to go over and discuss the events of the week.</li>
-    <li>You have your own email assigned just for you and your common space to quickly write a note, or quickly send a
-      video message to us for fast communication using our Bomb bomb video messaging system.</li>
-  </ul>
   </div>
-    </div>
 </div>
 </div>
 
 
 <div class = "section6">
   <div class = "marketYourHometoTheWorld">
-
-    <div class = "titleWeMarketYourHometoTheWorld">
-        <div class ="shapeDecorations">
-                <div class = "circle"></div>
-                <div class = "circle"></div>
-                <div class = "x-line"></div>
-                <div class = "y-line"></div>
-        </div>
+        <div class = "titleWeMarketYourHometoTheWorld">
+          <img style = "height:3rem;" src="img/vector/fleurdelis.png" alt="">
         <h1>We Market Your Home to The World</h1>
-    </div>
-    
+        </div>
+  
     <div class = "subText">
         <h2>Our Online Marketing Strategy</h2>
         <p>​​​​​​​The Bay Area remains one of the world's most sought-after regions to live in, and when looking to sell, it is vital that your 
@@ -409,36 +474,55 @@
 
   <div class = "exposures">
       <div class = "exposure">
-        <h1>Local Exposure</h1>
-        <p>Through our partnership with Nextdoor, the private online social network now used in over 80% of U.S. neighborhoods and virtually 
-          all Bay Area neighborhoods, we make sure your home receives targeted local exposure. When you list your home with Hansen Partners 
-          it will automatically appear on Nextdoor in your neighborhood.</p>
+        <div class="indexMark">local exposure</div>
+        <div class = "exposure-text">
+          <h1>Local Exposure</h1>
+          <p>Through our partnership with Nextdoor, the private online social network now used in over 80% of U.S. neighborhoods and virtually 
+            all Bay Area neighborhoods, we make sure your home receives targeted local exposure. When you list your home with Hansen Partners 
+            it will automatically appear on Nextdoor in your neighborhood.</p>
+        </div>
       </div>
+
       <div class = "exposure">
-        <h1>National Exposure</h1>
-        <p>We secure strategic positioning and enhancement on Realtor.com, Trulia, and Zillow, driving more consumers to your home and 
-          increasing exposure. We  will receive every inquiry about your property directly.</p>
+          <div class="indexMark">national exposure</div>
+          <div class = "exposure-text">
+          <h1>National Exposure</h1>
+          <p>We secure strategic positioning and enhancement on Realtor.com, Trulia, and Zillow, driving more consumers to your home and 
+            increasing exposure. We  will receive every inquiry about your property directly.</p>
+        </div>
       </div>
+
       <div class = "exposure">
-        <h1>International Exposure</h1>
-        <p>To expose your luxury listing to millions of potential homebuyers worldwide, we promote on prominent international 
-          real estate portals, including: Wall Street Journal, LuxuryPortfolio.com, LuxuryRealEstate.com, LeadingRE.com, UniqueHomes.com, 
-          China.apr.com, Caimeiju, Juwai, Country Life UK</p>
+          <div class="indexMark">international exposure</div>
+          <div class = "exposure-text">
+          <h1>International Exposure</h1>
+          <p>To expose your luxury listing to millions of potential homebuyers worldwide, we promote on prominent international 
+            real estate portals, including: Wall Street Journal, LuxuryPortfolio.com, LuxuryRealEstate.com, LeadingRE.com, UniqueHomes.com, 
+            China.apr.com, Caimeiju, Juwai, Country Life UK</p>
+        </div>
       </div>
   </div>
 </div>
 
 
+
+
+
 <div class="section7">
-  <img class = "partnerLogos" src="img/image-057.webp" alt="">
+  <div class="partnerLogos">
+    <!-- <img src="img/image-057.webp" alt=""> -->
+    <img src="img/icon/realtorLogo.png" alt="">
+    <img src="img/icon/truliaLogo.png" alt="Trulia, HD Png Download@kindpng.com">
+    <img src="img/icon/zillowLogo.png" alt="">
+  </div>
+  
   <div class = "aboutPartners">
-    
         <div class = "partnersText">
        
             <div class = "realEstateIcons">
-              <img src= "img/vector/partnersLogo1.png">
-              <img src= "img/vector/partnersLogo2.png">
-              <img src=  "img/vector/partnersLogo3.png">
+              <img src= "img/vector/partnersLogo1-white.png">
+              <img src= "img/vector/partnersLogo2-white.png">
+              <img src=  "img/vector/partnersLogo3-white.png">
             </div>
 
             <div class="textContent">
@@ -446,13 +530,15 @@
               Leading Real Estate Companies of The World® & Luxury Portfolio International
             </h2>
             </br>
-            <p>JRockcliff is a founding member of Luxury Portfolio International
-            ®, the luxury division of Leading Real Estate Companies of the
-            World®. With more than 500 member firms around the world, 
-            Our luxury listings are exposed to a vast global audience and 
-            reach potential buyers and investors in over 50 countries.
-            </p>
-
+            <div class = "p">
+              
+                <p>JRockcliff is a founding member of Luxury Portfolio International
+                ®, the luxury division of Leading Real Estate Companies of the
+                World®. With more than 500 member firms around the world, 
+                Our luxury listings are exposed to a vast global audience and 
+                reach potential buyers and investors in over 50 countries.
+                </p>
+            </div>
             
            <h2> Who's Who in Luxury Real Estate</h2>
             </br>
@@ -469,20 +555,21 @@
           
           
           <div class = "partnersText">
+            <div class="textContent">
           <p>
           Through our international affiliations, we have a strong presence in over 50 countries. Our luxury listings are sent to prominent international real estate sites, reaching over 70 million potential buyers and investors worldwide through our relationships with:
           </p>
-          <div class = "realEstateIcons">
-          <img src= "img/vector/partnersLogo1.png">
-            <img src= "img/vector/partnersLogo2.png">
-            <img src=  "img/vector/partnersLogo3.png">
           </div>
+          <div class = "realEstateIcons">
+          <img src= "img/vector/partnersLogo1-white.png">
+            <img src= "img/vector/partnersLogo2-white.png">
+            <img src=  "img/vector/partnersLogo3-white.png">
+          </div>
+          <div class="textContent">
           <p>
           We also have several well-positioned affiliate offices in China, providing our clients with access to buyers in Hong Kong, Shanghai, and Beijing. 
           </p>
-          <p>
-          Through our international affiliations, we have a strong presence in over 50 countries. Our luxury listings are sent to prominent international real estate sites, reaching over 70 million potential buyers and investors worldwide through our relationships with:
-          </p>
+          </div>
           </div>
         
     </div>
@@ -495,43 +582,35 @@
 
 <div class="section8">
 
-<div class = "tablet">
+    <!-- <div class = "tablet">
     <img src="img/edited-p25.png" alt="lmao">
-    </div> 
+    </div>  -->
     <div class = "qualities">
-        <div>
-          <p class = "indexMark">responsive</p>
+  
           <div class = container>
-          <img src = "img/vector/mailIcon.png">
+          <img src = "img/vector/mailIcon-white.png">
             <div class = title> <h1>Responsive</h1> </div>
             <p>I am always available via phone, text, or email.</p>
           </div>
-        </div>
-        
-        <div>
-        <p class = "indexMark">syndication</p>
+
           <div class="container">
-            <img src = "img/vector/flagIcon.png">
+            <img src = "img/vector/flagIcon-white.png">
             <div class = title><h1>Syndication</h1></div>
             <p>I market your property locally, nationally, and internationally</p>
             </div>  
-          </div>
-        <div>
-        <p class = "indexMark">virtual tour</p>
-          <div class="container">
-        <img src = "img/vector/locationIcon.png">
+
+        <div class="container">
+          <img src = "img/vector/locationIcon-white.png">
             <h1>Virtual Tour</h1>
             <p>Let's make your home stand out with a high quality virtual tour.</p>
         </div>
-        </div>
-        <div>
-        <p class = "indexMark">photography</p>
-          <div class="container">
-        <img src = "img/vector/landscapeIcon.png">
-            <h1>Photography</h1>
-            <p>Beautiful, high-end photography is a central part of our marketing plan for your property.</p>
-        </div>
-        </div>
+
+        <div class="container">
+          <img src = "img/vector/dronePhotography-white.png">
+          <h1>Drone Photography</h1>
+          <p>Beautiful, high-end photography is a central part of our marketing plan for your property.</p>
+      </div>
+        
     </div>
 
 </div>
@@ -586,28 +665,60 @@
       </br>for latest news and updates. Stay tuned! 
       </p>
       <form class="newsletter__subscribe" data-type="contact-form">
-            <input required="" placeholder="Email Address" name="email" type="email">
-      
-            <div class="lp-disclaimer">
-  <label class="lp-tcr-content"> 
-    <span class="lp-tcr-checkbox">
-      <input type="checkbox" name="termsAccepted" required>
-    </span>
-    <span class="lp-tcr-message">
-      <p>
-      By providing Julie Hansen Partnership your contact information, you acknowledge and agree to our
-      <a href="/terms-and-conditions" target="_blank">Privacy Policy</a> and consent to receiving marketing communications.
-      including through automated calls, texts, and emails, some of which may use artificial or prerecorded voices. This consent isn’t necessary for purchasing any products or services and you may opt out at any time. To opt out from texts, you can reply, ‘stop’ at any time. To opt out from emails, you can click on the unsubscribe link in the emails. Message and data rates may apply. 
-      </p>
-    </span>
-  </label>
-</div>
-
+    
+          <input class = "emailInput" required="" placeholder="Email Address" name="email" type="email">
+          </break>
+          <div class="lp-disclaimer">
+            <label class="lp-tcr-content">
+              <span class="lp-tcr-checkbox">
+                <input type="checkbox" name="termsAccepted" 
+                  oninvalid="this.setCustomValidity('Please accept the terms and conditions')" 
+                  oninput="this.setCustomValidity('')" required="">
+                  </span>
+                    <span class="lp-tcr-message">
+                      By providing Julie Hansen Partnership
+                      your contact information, you acknowledge and agree to our
+                      <a href="/terms-and-conditions" target="_blank">Privacy Policy</a> and consent to receiving marketing communications,
+                      including through automated calls, texts, and emails, some of which may use artificial or prerecorded voices.
+                      This consent isn’t necessary for purchasing any products or services and you may opt out at any time.
+                      To opt out from texts, you can reply, ‘stop’ at any time. To opt out from emails, you can click on the unsubscribe
+                      link in the emails. Message and data rates may apply.
+                    </span>
+              </label>
+            </div>
             <input type="submit" value="SUBSCRIBE" class="btn btn--subscribe button-style-1">
             <p class="successHide">Email Submitted!</p>
       </form>
   </div>
-</div>  <!-- sectionFinal -->
+
+  <div class="otherSocials">
+    <div class="footerIcons">
+      <div class="setA">
+        <svg class = "icons" xmlns='http://www.w3.org/2000/svg' viewBox='0 -60 320 630'><path d='M80 299.3V512h116V299.3h86.5l18-97.8H196v-34.6c0-51.7 20.3-71.5 72.7-71.5 16.3 0 29.4.4 37 1.2V7.9C291.4 4 256.4 0 236.2 0 129.3 0 80 50.5 80 159.4v42.1H14v97.8z' fill="#3e3e3e"/></svg>
+        <svg class = "icons" xmlns='http://www.w3.org/2000/svg' viewBox='0 -60 448 630'><path d='M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3M447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z' fill="#3e3e3e"/></svg>
+      </div>
+
+      <div class="setB">
+        <img src="img/vector/equalHousingLogo.png" alt="logo1">
+        <img src="img/vector/realtorLogo.png" alt="logo2">
+      </div>
+    </div>
+    
+    <div class="copyright-and-developer">
+      <h2>
+        Website Designed &amp; Developed by 
+        <a href="https://www.luxurypresence.com/" target="_blank" class="luxury-link hyperlink-style-1">
+          Luxury Presence
+        </a>
+      </h2>   
+      
+      <h2>
+        Copyright <span class="auto-year-update">2025</span> | <a href="/terms-and-conditions" class="hyperlink-style-1">Privacy Policy</a>
+      </h2>
+    </div>
+    
+  </div>
+</div>
 
 
 

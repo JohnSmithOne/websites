@@ -100,11 +100,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchbar = document.getElementById("searcbar");
   const jhserenoLogo = document.getElementById("jhserenoLogo");
   const mainLogo = document.getElementById("mainlogo");
+  // const fillerLines = document.getElementById("fillerLines");
   const backtoTop = document.getElementById("backtoTop");
-
+  const phone = document.getElementById("phone");
+  const mail = document.getElementById("mail");
+  const buttonsContainer = document.querySelector(".fixedPositionedButtons");
 
   jhserenoLogo.style.opacity = "0";
   jhserenoLogo.style.pointerEvents = "none";
+
+  backtoTop.style.opacity = "0";
+  backtoTop.style.pointerEvents = "none";
+
+  phone.style.opacity = "0";
+  phone.style.pointerEvents = "none";
+
+  mail.style.opacity = "0";
+  mail.style.pointerEvents = "none";
+
+  fillerLines.style.opacity = "0";
+  fillerLines.style.pointerEvents = "none";
+
+  buttonsContainer.style.bottom = "-12rem"
 
   window.addEventListener("scroll", () => {
 
@@ -115,27 +132,53 @@ document.addEventListener("DOMContentLoaded", () => {
       jhserenoLogo.style.pointerEvents = "auto";
 
       mainLogo.style.opacity = "0";
+
       backtoTop.style.opacity = "1";
-      backtoTop.style.bottom = "4rem";
+      backtoTop.style.pointerEvents = "auto";
+      phone.style.opacity = "1";
+      phone.style.pointerEvents = "auto";
+      mail.style.opacity = "1";
+      mail.style.pointerEvents = "auto";
+  
+
+      fillerLines.style.opacity = "1";
+      fillerLines.style.pointerEvents = "auto";
+
+       buttonsContainer.style.bottom = "4rem";
       
     } else {
       jhserenoLogo.style.opacity = "0";
       jhserenoLogo.style.pointerEvents = "none";
 
       mainLogo.style.opacity = "1";
+
       backtoTop.style.opacity = "0";
-      backtoTop.style.bottom = "-4rem";
+      phone.style.opacity = "0";
+      mail.style.opacity = "0";
+
+
+      fillerLines.style.opacity = "0";
+      fillerLines.style.pointerEvents = "none";
+
+       buttonsContainer.style.bottom = "-12rem";
     }
   });
 });
 
+//booking and search
 const searchButton = document.getElementById("searchButton");
 const searchInput = document.getElementById("searchInput");
-
 searchButton.addEventListener("click", () => {
   searchInput.classList.toggle("visible"); 
 });
 
+var bookingScreen = document.getElementById("bookingScreen");
+function bookingOpen(){
+  bookingScreen.style.display = "flex";
+}
+function bookingExit(){
+  bookingScreen.style.display = "none";
+}
 
 //subscribe button interaction
 document.querySelector(".newsletter__subscribe").addEventListener("submit", function(event) {
@@ -163,3 +206,5 @@ document.querySelector(".newsletter__subscribe").addEventListener("submit", func
     }, 1000); // Matches transition duration
   }, 3000);
 });
+
+
