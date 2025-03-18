@@ -1,6 +1,11 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Doto:wght@100..900&family=Honk&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Doto:wght@100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"');
+    
+
 $victoryNotif: "Changa One", sans-serif;
+$montserrat: "Montserrat Alternates", sans-serif;
 $background-color:#32133e ;
 $text-color: #250e2e ;
 
@@ -11,27 +16,66 @@ $text-color: #250e2e ;
 }
 
 body {
-  display: grid;
-  justify-items: center;
-  grid-template-areas:
-    "bigX gameBlock bigO";
-  background-color: $background-color;
-  height: auto;
-  width: 100vw;
+position: relative;
+display: grid;
+justify-items: center;
+grid-template-areas:
+  "bigX gameBlock bigO";
+width: 100vw;
+grid-template-columns: repeat(3, 1fr);
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%23330055' cx='50' cy='0' r='50'/%3E%3Cg fill='%233a015d' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23410165' cx='50' cy='100' r='50'/%3E%3Cg fill='%2348026e' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%23500376' cx='50' cy='200' r='50'/%3E%3Cg fill='%2357047e' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%235f0587' cx='50' cy='300' r='50'/%3E%3Cg fill='%2367068f' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%236f0798' cx='50' cy='400' r='50'/%3E%3Cg fill='%237707a0' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%238008a9' cx='50' cy='500' r='50'/%3E%3Cg fill='%238909b1' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%239109ba' cx='50' cy='600' r='50'/%3E%3Cg fill='%239a09c3' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%23a309cb' cx='50' cy='700' r='50'/%3E%3Cg fill='%23ad09d4' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23b608dc' cx='50' cy='800' r='50'/%3E%3Cg fill='%23c007e5' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%23c905ee' cx='50' cy='900' r='50'/%3E%3Cg fill='%23d303f6' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23D0F' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
+background-attachment: fixed;
+background-size: contain;
 }
 
 main {
   display: grid;
   grid-template-columns: repeat(3, 8rem);
-  grid-gap: 0;
+  grid-gap: 0.25rem;
+  background-color: rgb(76, 33, 106);
+  padding:1rem;
+}
+
+app-square {
+  position: relative;
+  height: 8rem;
+  background-color: #371545;
 }
 
 .bigX, .bigO {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18rem;
-  color: $text-color;
+
+  font-family: $montserrat;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "MORF" 15,
+    "SHLN" 50;
+  font-size: 15rem;
+  color: #330055;
+  opacity: 0.5;
+}
+
+.active-player {
+  opacity: 1;
+  transform: scale(1.2);
+  color: #fff;
+  text-align: center;
+  animation: spin 2s ease-in-out infinite alternate;
+  font-weight:800;
+}
+
+@keyframes spin {
+  0% {
+    
+  }
+  100% {
+   transform: scale(1.1);
+  }
+
 }
 
 .bigX {
@@ -50,26 +94,70 @@ main {
   justify-content: center;
   align-items: center;
   color: $text-color;
-
   gap: 1rem;
 }
 
-.gameBlock h1{
-  color:white;
+.playerTurnContainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.playerTurnContainer span{
+  font-size:4rem;
+}
+
+.playerTurn{
+  font-family: $victoryNotif;
+  font-weight: 400;
+  font-size: 3.125rem;
+  
+  color: #49372e;
+  background-image: linear-gradient(
+    #392820 46%,
+    #49372e 60%,
+    #91816a 80%
+  );
+  text-align: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgb(255, 255, 255);
+  z-index: 1;
+}
+.playerTurnShadow{
+  position: absolute;
+  top:1rem;
+  font-family: $victoryNotif;
+  font-weight: 400;
+  font-size: 3.125rem;
+  color: #000000;
+  text-align: center;
+  opacity: 0.2;
+}
+//  .gameBlock span{
+//     font-family: "Honk", system-ui;
+//     font-style: italic;
+//     font-weight: 200;
+//     color:rgb(243, 238, 229);
+//     text-align: center;
+//     white-space: nowrap; 
+//     overflow: hidden;
+//     z-index: 1;
+//  }
+
 .gameBlock h2{
-    position:absolute;
-    width:0%;
-    padding:0.5rem;
+  position:absolute;
+  width:0%;
     background-image:  
      radial-gradient(circle, 
-
      rgb(254, 145, 16) 70%,
      rgba(254, 145, 16, 0.7), 
      rgba(254, 145, 16, 0.3),
-     rgba(254, 145, 16, 0)90%,
-      rgba(254, 145, 16, 0)100%
+     rgba(254, 145, 16, 0)90%,  
+     rgba(254, 145, 16, 0)100%
      );
     border-radius:30% 30% 30% 30% / 50% 50% 50% 50%;
 
@@ -89,52 +177,102 @@ main {
   animation: victoryNotif 0.5s ease-in-out forwards;
 }
 
+
 @keyframes victoryNotif {
   0% {
     width: 0%;
     height: 0%;
   }
+  5%{
+    padding:0.5rem;
+  }
   20% {
+    padding:0.5rem;
     background-image: unset;
     background-color: white;
     color:black;
-    width: 130%;
+    width: 180%;
     height: unset;
   }
 
   30%{
+    padding:0.5rem;
     background-image: unset;
     background-color: rgb(25, 174, 17);
     color:rgb(255, 255, 255);
-    width: 150%;
+    width: 180%;
     height: unset;
   }
 
   35%{
+    padding:0.5rem;
     background-color:unset;
     background-color: rgb(34, 123, 207);
     color: rgb(20, 129, 14);
-    width: 150%;
+    width: 180%;
     height: unset;
   }
   40% {
+    padding:0.5rem;
     background-image: unset;
     background-color: white;
     color:black;
-    width: 150%;
+    width: 180%;
     height: unset;
   }
   100% {
-    width: 150%;
+    padding:0.5rem;
+    width: 180%;
     height: unset;
   }
 }
 
-app-square {
-  position: relative;
-  height: 8rem;
+.win {
+  background-color: lightgreen;
+  color:white ;
+  font-weight: bold;
+  animation: spark 1s infinite alternate;
 }
-button {
+
+@keyframes spark {
+  from { box-shadow: 0 0 5px lightgreen; }
+  to { box-shadow: 0 0 15px green; }
+}
+
+.draw{
+  position:absolute;
+  border-radius: 2rem ;
+  font-family: $victoryNotif;
+  font-weight: 200;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  text-align: center;
+  color:white;
+  background-image:  
+  linear-gradient(to top, 
+  rgb(31, 88, 187) 100%,  
+  rgb(24, 22, 147)
+  );
+  width: 150%;
+  animation: draw 1s ease-in-out forwards;
+  opacity:0;
+  z-index: 1;
+}
+
+@keyframes draw {
+  0%{
+    bottom:40%;
+  }
+  50%{
+    bottom:50%;
+  }
+  100%{
+    opacity:1;
+    bottom:50%;
+  }
+}
+
+button {  
   font-size: 1rem;
   color: #fafafa;
   text-transform: uppercase;

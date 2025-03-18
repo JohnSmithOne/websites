@@ -1,21 +1,27 @@
 <body>
-<div class = "bigX" >X</div>
+    
+<div class = "bigX"  [ngClass]="{ 'active-player': player === 'X' }" >X</div>
     <div class = "gameBlock">
-        <h1>Player {{ player }}'s Turn! </h1>
-        <h2 *ngIf="winner" [ngClass]="{ 'animate-victory': winner }" >
+        <div  class = "playerTurnContainer">
+            <h1 class = "playerTurn">Player <span>{{ player }}'s</span> Turn! </h1>
+            <h1 class = "playerTurnShadow">Player <span>{{ player }}'s</span> Turn! </h1>
+        </div>
+        <h2 *ngIf= "winner" [ngClass]="{ 'animate-victory': winner }" >
             PLAYER {{ winner }} WINS!!
         </h2>
-
+        <h1 *ngIf= "draw" ngClass= "draw">
+             DRAW
+        </h1>
         <main>
             <app-square 
                 *ngFor="let val of squares; let i = index" 
                 [value]="val"
-                (click)="makeMove(i)"> 
+                (click)="makeMove(i)"
+                [ngClass]="{ 'win': winningLine?.includes(i) }"> 
             </app-square>
         </main>
 
         <button nbButton outline status="danger" (click)="newGame()">Start new Game</button>
     </div>
-
-<div class = "bigO">O</div>
-</body>
+<div class = "bigO" [ngClass]="{ 'active-player': player === 'O' }" >O</div>
+</body> 
