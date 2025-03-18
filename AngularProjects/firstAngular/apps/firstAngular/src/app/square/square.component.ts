@@ -15,6 +15,7 @@ import { Component, Input } from '@angular/core';
       font-weight: 6  00;
       color:white;
       // border: 3px solid rgb(175, 174, 172);
+      border:none;
       background:transparent;
       // background:rgb(40, 37, 32);
     }

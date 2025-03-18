@@ -40,6 +40,7 @@ app-square {
   position: relative;
   height: 8rem;
   background-color: #371545;
+  border: 3px solid rgb(92, 92, 92);
 }
 
 .bigX, .bigO {
@@ -72,8 +73,21 @@ app-square {
   0% {
     
   }
+
+  20%{
+     
+  }
+  40% {
+  
+  }
+  60%{
+
+  } 
+  80%{
+    
+  }
   100% {
-   transform: scale(1.1);
+   transform: scale(1.1) skew(20deg);
   }
 
 }
@@ -174,7 +188,7 @@ app-square {
 }
 
 .animate-victory {
-  animation: victoryNotif 0.5s ease-in-out forwards;
+  animation: victoryNotif 0.5s 0.3s ease-in-out forwards;
 }
 
 
@@ -227,18 +241,68 @@ app-square {
   }
 }
 
+
 .win {
-  background-color: lightgreen;
-  color:white ;
+  background-image: radial-gradient(
+    circle,
+    rgb(127, 240, 166) 20%,
+     rgb(54, 186, 127),
+  ) ;
   font-weight: bold;
-  animation: spark 1s infinite alternate;
+  animation: spark 0.2s ease-in-out forwards,
+             glow 0.5s infinite 0.5s alternate;
 }
 
 @keyframes spark {
-  from { box-shadow: 0 0 5px lightgreen; }
-  to { box-shadow: 0 0 15px green; }
+  0% {
+    background-image: unset;
+    background-color: rgb(64, 164, 235);
+    box-shadow: 0 0 5px white; 
+    transform: scale(1.1);
+    }
+  20% { 
+    background-image: unset;
+    background-color:rgb(25, 174, 17);
+    box-shadow: 0 0 15px green; 
+  }
+
+  40% {
+    background-image: unset;
+    background-color:white;
+    box-shadow: 0 0 15px white; 
+    transform: scale(1.1)
+  }
+
+  60%{
+    background-image: unset;
+    background-color:rgb(223, 195, 101);
+    box-shadow: 0 0 15px rgb(223, 195, 101); 
+  }
+
+  80%{
+    background-image: unset;
+    background-color:white;
+    box-shadow: white; 
+    transform: scale(1.1)
+  }
+  100%{
+    background-image: radial-gradient(
+    circle,
+    rgb(127, 240, 166) 20%,
+     rgb(54, 186, 127),
+  ) ;
+
+  }
 }
 
+@keyframes glow{
+  from {
+    box-shadow: 0 0 5px  rgb(54, 186, 127);  
+    }
+  to{ 
+    box-shadow: 0 0 15px rgb(127, 240, 166); 
+  }
+}
 .draw{
   position:absolute;
   border-radius: 2rem ;
