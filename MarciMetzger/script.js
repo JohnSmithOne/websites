@@ -28,3 +28,19 @@ document.getElementById('downButton').addEventListener('click', () => {
 function getRandomRotation() {
     return Math.floor(Math.random() * 21) - 10;
 }
+
+
+//Scroll Observer
+const observer = new IntersectionObserver((entries) => {        
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+});
+
+const hiddenElements = document.querySelectorAll('.animatedBlock');
+hiddenElements.forEach((el, index) => {
+    el.style.setProperty('--delay', `${index * 0.2}s`);
+    observer.observe(el);
+  });

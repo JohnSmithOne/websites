@@ -17,6 +17,7 @@
     --lineThickness: 1.5px;
     --mainColor:rgb(244, 238, 231);
     --inputColor: rgb(248, 245, 242); 
+    --delay: 0.1s;
 
     /*for pattern*/
     --bg-color: #C8C2AA;
@@ -529,7 +530,7 @@ nav .metzgerLogo{
     align-items: center;
     height:100%;
     width:100%;
-    z-index: 1;
+
 }
 
 .galleryOuter .buttons button{
@@ -537,6 +538,7 @@ nav .metzgerLogo{
     border: 1.5px solid #79634d;;
     padding: 0.25rem;
     background-color: transparent;
+    z-index:100;
 }
 
 .buttons .frame{
@@ -1014,5 +1016,20 @@ nav .metzgerLogo{
     position:absolute;
     width: 15%;
     height: 100%;
-    border-bottom: 2px solid #969696;
+    border-bottom: 2px solid #969696 ;
+}
+
+
+/* SCROLL ANIMATIONS */
+.animatedBlock{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.1s ease-in-out;
+}
+
+.show{
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease-out;
+    transition-delay: var(--delay, 0s); /* Use a custom variable */
 }
